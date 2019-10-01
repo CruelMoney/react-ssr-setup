@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
+import { Input } from 'components/FormComponents';
 import connectToForm from '../higher-order/connectToForm';
 
 class MyTextField extends Component {
@@ -103,7 +103,7 @@ class MyTextField extends Component {
                     pointerEvents: this.props.disabled ? 'none' : 'auto',
                 }}
             >
-                <TextField
+                <Input
                     placeholder=""
                     value={this.props.value || undefined}
                     name={this.props.name}

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import * as express from 'express';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 import { getDataFromTree } from '@apollo/react-ssr';
@@ -11,29 +9,20 @@ import { ApolloProvider } from 'react-apollo';
 import App from '../../shared/App';
 import Html from '../components/HTML';
 
-const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default;
-const getMuiTheme = require('material-ui/styles/getMuiTheme').default;
-
 const serverRenderer = () => async (req, res) => {
     const sheet = new ServerStyleSheet();
 
     const routerContext = {};
     const helmetContext = {};
 
-    const theme = getMuiTheme({
-        userAgent: req.headers['user-agent'],
-    });
-
     const Content = (
         <ApolloProvider client={res.locals.apolloClient}>
             <StyleSheetManager sheet={sheet.instance}>
                 <Provider store={res.locals.store}>
                     <StaticRouter location={req.url} context={routerContext}>
-                        <MuiThemeProvider muiTheme={theme}>
-                            <HelmetProvider context={helmetContext}>
-                                <App />
-                            </HelmetProvider>
-                        </MuiThemeProvider>
+                        <HelmetProvider context={helmetContext}>
+                            <App />
+                        </HelmetProvider>
                     </StaticRouter>
                 </Provider>
             </StyleSheetManager>

@@ -8,9 +8,6 @@ import RequestForm from '../../../components/common/RequestForm/RequestForm';
 import DJCards from './djCards';
 
 class Home extends Component {
-    themeColor = '#25F4D2';
-    secondColor = '#31DAFF';
-
     getChildContext() {
         return {
             color: this.themeColor,
@@ -20,6 +17,9 @@ class Home extends Component {
     componentDidMount() {
         // scrollIntoView.polyfill()
     }
+
+    themeColor = '#25F4D2';
+    secondColor = '#31DAFF';
 
     requestForm = null;
 

@@ -5,7 +5,7 @@ import { DJs } from '../../../../constants/constants';
 import DJCard from '../../../../components/common/DJCard';
 
 export default () => {
-    const [cards] = useState(shuffle(DJs));
+    const [cards] = useState(DJs);
 
     return (
         <div className="dj-cards">

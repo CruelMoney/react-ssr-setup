@@ -30,6 +30,7 @@ module.exports = {
         'prefer-const': 1,
         'react/no-unused-prop-types': 1,
         'react/jsx-indent': 1,
+        'import/namespace': 1,
     },
     overrides: [
         {

@@ -6,17 +6,11 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/FormActions';
 
 class form extends PureComponent {
-    displayNamen = 'Form';
-
     constructor(props) {
         super(props);
         if (props.registerCheckForm) {
             props.registerCheckForm(this.isFormValid);
         }
-    }
-
-    componentWillUnmount() {
-        this.props.resetState();
     }
 
     state = {
@@ -41,10 +35,15 @@ class form extends PureComponent {
         };
     };
 
+    componentWillUnmount() {
+        this.props.resetState();
+    }
+
+    displayNamen = 'Form';
+
     updateValue = (name, value) => {
         this.props.updateValue(name, value);
-        if (setTimeout(() => this.isFormValid(false), 0)) {
-        }
+        setTimeout(() => this.isFormValid(false), 0);
     };
 
     resetFuncs = [];
@@ -228,7 +227,6 @@ export default (props) => <SmartForm {...props} />;
 export { default as Text } from './Text';
 export { default as Textfield } from './Textfield';
 export { default as TextBox } from './TextBox';
-export { default as LocationSelector } from './LocationSelector';
 export { default as LocationSelectorSimple } from './LocationSelectorSimple';
 export { default as ToggleButton } from './ToggleButton';
 export { default as Button } from './Button-v2';

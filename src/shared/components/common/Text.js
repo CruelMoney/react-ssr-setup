@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
+import { Input } from 'components/FormComponents';
 import * as validators from '../../utils/validators';
 
 export default class Text extends Component {
@@ -14,6 +14,11 @@ export default class Text extends Component {
         validate: PropTypes.arrayOf(PropTypes.string),
     };
 
+    static defaultProps = {
+        type: 'string',
+        validate: [],
+    };
+
     constructor(props) {
         super(props);
         this.removeValidationFromContext = this.context.registerValidation((show) =>
@@ -21,18 +26,13 @@ export default class Text extends Component {
         );
     }
 
-    componentWillUnmount() {
-        this.removeValidationFromContext();
-    }
-
-    static defaultProps = {
-        type: 'string',
-        validate: [],
-    };
-
     state = {
         errors: [],
     };
+
+    componentWillUnmount() {
+        this.removeValidationFromContext();
+    }
 
     updateValue = (value) => {
         this.context.update(this.props.name, value);
@@ -68,7 +68,7 @@ export default class Text extends Component {
     render() {
         return (
             <div>
-                <TextField
+                <Input
                     type={this.props.type}
                     fullWidth={true}
                     hintText={this.props.placeholder}

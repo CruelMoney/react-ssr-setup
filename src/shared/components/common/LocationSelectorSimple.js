@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import AutoComplete from 'material-ui/AutoComplete';
 import useScript from '@charlietango/use-script';
+import { Input } from 'components/FormComponents';
 import connectToForm from '../higher-order/connectToForm';
 import { Body } from '../Text';
 
@@ -146,7 +146,8 @@ const LocationSelector = ({
     const styles = big ? stylesBig : stylesNormal;
 
     return (
-        <AutoComplete
+        <Input
+            type="text"
             id={name}
             name={name}
             className="search-bar__auto-complete"
@@ -162,28 +163,10 @@ const LocationSelector = ({
             searchText={value}
             hintText={placeholder || 'City'}
             dataSource={dataSource}
-            onUpdateInput={onChangeHandler}
-            onNewRequest={onValueSelected}
+            // onUpdateInput={onChangeHandler}
+            // onNewRequest={onValueSelected}
             onBlur={onBlur}
             disabled={disabled}
-            errorText={
-                errors.length ? (
-                    <div
-                        style={{
-                            position: 'relative',
-                            zIndex: '1',
-                        }}
-                    >
-                        <div className="errors">
-                            {errors.map((error, i) => (
-                                <p className="error" key={i}>
-                                    {error}
-                                </p>
-                            ))}
-                        </div>
-                    </div>
-                ) : null
-            }
         />
     );
 };

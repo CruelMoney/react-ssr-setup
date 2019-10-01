@@ -198,7 +198,6 @@ const DataForm = ({
     );
 
     const { title, tags, description, year, image, imageFile } = form || {};
-    debugger;
     return (
         <form onSubmit={updateSound}>
             <Title style={{ marginBottom: '39px' }}>Add sound</Title>

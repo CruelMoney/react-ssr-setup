@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'SourceSansPro-Semibold';
+    font-weight: 600;
+    src: url('../assets/fonts/SourceSansPro-Semibold.ttf') format('truetype'), local('Arial'),
+        local('Helvetica');
+}
+@font-face {
+    font-family: 'SourceSansPro-Regular';
+    font-weight: 400;
+    src: url('../assets/fonts/SourceSansPro-Regular.ttf') format('truetype'), local('Arial'),
+        local('Helvetica');
+}
+@font-face {
+    font-family: 'SourceSansPro-Bold';
+    font-weight: 700;
+    src: url('../assets/fonts/SourceSansPro-Bold.ttf');
+    src: url('../assets/fonts/SourceSansPro-Bold.ttf') format('truetype'), local('Arial'),
+        local('Helvetica');
+}
+@font-face {
+    font-family: 'SourceSansPro-Light';
+    font-weight: 300;
+    src: url('../assets/fonts/SourceSansPro-Light.ttf');
+    src: url('../assets/fonts/SourceSansPro-Light.ttf') format('truetype'), local('Arial'),
+        local('Helvetica');
+}
+
+@font-face {
+    font-family: 'AvenirNext-Regular', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    src: url('../assets/fonts/AvenirNext-Regular.ttf');
+    src: url('../assets/fonts/AvenirNext-regular.woff') format('woff'),
+        url('../assets/fonts/AvenirNext-Regular.ttf') format('truetype'), local('Arial'),
+        local('Helvetica');
+}
+
+@font-face {
+    font-family: 'AvenirNext-Medium';
+    font-weight: 500;
+    src: url('../assets/fonts/AvenirNext-DemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'AvenirNext-DemiBold', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    src: url('../assets/fonts/AvenirNext-DemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'AvenirNext-Bold', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    src: url('../assets/fonts/AvenirNext-Bold.ttf');
+}
+
+/* Ostrich Sans Rounded */
+
+@font-face {
+    font-family: 'Ostrich Sans Rounded';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../assets/fonts/ostrich-sans-rounded.eot');
+    src: url('../assets/fonts/ostrich-sans-rounded.woff') format('woff'),
+        url('../assets/fonts/ostrich-sans-rounded.ttf') format('truetype'),
+        url('../assets/fonts/ostrich-sans-rounded.svg') format('svg');
+}
+
+/* Ostrich Sans Inline */
+
+@font-face {
+    font-family: 'Ostrich Sans Inline';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/ostrich-sans-inline-regular.eot');
+    src: url('../assets/fonts/ostrich-sans-inline-regular.woff') format('woff'),
+        url('../assets/fonts/ostrich-sans-inline-regular.ttf') format('truetype'),
+        url('../assets/fonts/ostrich-sans-inline-regular.svg') format('svg');
+}
+@font-face {
+    font-family: 'Ostrich Sans Inline';
+    font-style: italic;
+    font-weight: normal;
+    src: url('../assets/fonts/ostrich-sans-inline-italic.eot');
+    src: url('../assets/fonts/ostrich-sans-inline-italic.woff') format('woff'),
+        url('../assets/fonts/ostrich-sans-inline-italic.ttf') format('truetype'),
+        url('../assets/fonts/ostrich-sans-inline-italic.svg') format('svg');
+}

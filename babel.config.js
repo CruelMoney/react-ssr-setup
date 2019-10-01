@@ -19,6 +19,7 @@ module.exports = {
         '@babel/proposal-optional-chaining',
         '@babel/syntax-dynamic-import',
         'macros',
+        'babel-plugin-styled-components',
     ],
     env: {
         test: {
@@ -26,6 +27,7 @@ module.exports = {
                 '@babel/transform-modules-commonjs',
                 '@babel/syntax-dynamic-import',
                 '@babel/plugin-transform-runtime',
+                'babel-plugin-styled-components',
             ],
         },
     },

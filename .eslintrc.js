@@ -21,6 +21,15 @@ module.exports = {
         'import/no-unassigned-import': 0,
         'import/no-named-as-default-member': 0,
         'prettier/prettier': 'error',
+        'react/prop-types': 0,
+        'react/display-name': 0,
+        'no-unused-vars': 1,
+        'eqeqeq': 1,
+        'no-alert': 0,
+        'react/no-unescaped-entities': 0,
+        'prefer-const': 1,
+        'react/no-unused-prop-types': 1,
+        'react/jsx-indent': 1,
     },
     overrides: [
         {

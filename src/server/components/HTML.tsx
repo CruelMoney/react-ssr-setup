@@ -2,37 +2,49 @@ import React from 'react';
 
 type Props = {
     children: any;
-    css: string[];
+    myCss: string[];
     helmetContext: any;
     scripts: string[];
     state: string;
+    apolloState: string;
+    headerChildren: any;
 };
 
 const HTML = ({
     children,
-    css = [],
+    myCss = [],
     scripts = [],
     state = '{}',
+    apolloState,
     helmetContext: { helmet },
+    headerChildren,
 }: Props) => (
     <html lang="">
         <head>
             <meta charSet="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+            />
+            <script id="stripe-js" src="https://js.stripe.com/v3/" async />
             {helmet.base.toComponent()}
             {helmet.title.toComponent()}
             {helmet.meta.toComponent()}
             {helmet.link.toComponent()}
             {helmet.script.toComponent()}
-            {css.filter(Boolean).map((href) => (
+            {myCss.filter(Boolean).map((href) => (
                 <link key={href} rel="stylesheet" href={href} />
             ))}
+
             <script
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                     // TODO: Add jsesc/stringify here
                     // see: https://twitter.com/HenrikJoreteg/status/1143953338284703744
-                    __html: `window.__PRELOADED_STATE__ = ${state}`,
+                    __html: `
+                    window.__PRELOADED_STATE__ = ${state};
+                    window.__PRELOADED_STATE__ = ${apolloState};
+                    `,
                 }}
             />
         </head>
@@ -43,6 +55,10 @@ const HTML = ({
                 <script key={src} src={src} />
             ))}
         </body>
+
+        <div id="tooltip-portal" />
+        <div id="mobile-menu-portal" />
+        <div id="notification-portal" />
     </html>
 );
 

@@ -1,0 +1,228 @@
+.location_book-dj {
+    overflow: hidden;
+    position: relative;
+}
+.location_book-dj #content {
+    margin: 0;
+    padding: 0;
+}
+.location_book-dj #content > div,
+.location_book-dj header {
+    color: #111111;
+    padding: 0;
+    position: relative;
+}
+
+.location_book-dj .breadcrumbs {
+    display: block;
+}
+
+.location_book-dj .menu-wrapper > .container {
+    background: rgba(255, 255, 255, 0.96);
+    height: 80px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 4;
+}
+
+.location_book-dj .menu-wrapper > .container:after,
+.location_book-dj .menu-wrapper > .container:before {
+    background: rgba(255, 255, 255, 0.96);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.location_book-dj .menu-wrapper > .container:after {
+    right: -90%;
+}
+.location_book-dj .menu-wrapper > .container:before {
+    left: -90%;
+}
+
+.span-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.locations-page header .container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+.locations-page header .container:before {
+    background: #31daff;
+    content: '';
+    height: 1000vw;
+    left: 200px;
+    opacity: 0.85;
+    position: absolute;
+    top: 0;
+    transform: translateX(-100%);
+    width: 100%;
+    z-index: 1;
+}
+
+.locations-page header article {
+    align-items: center;
+    display: flex;
+    height: calc(100% - 80px);
+    left: 0;
+    margin-top: 80px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+.locations-page header .card {
+    border-radius: 0;
+    box-shadow: none;
+    overflow: auto;
+}
+
+.locations-page h1 {
+    font-family: 'SourceSansPro-Regular';
+}
+.locations-page h1 b {
+    display: block;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.locations-page header button > div {
+    color: white !important;
+}
+
+.locations-page .request-form {
+    margin-top: 50px;
+}
+.locations-page .request-form .col-md-6,
+.location-page .thank-you-text {
+    margin-left: 26%;
+    z-index: 3;
+}
+
+.locations-page .request-form .card {
+    border: 2px solid #eee;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 40px;
+}
+.location-page .event-submit-wrapper {
+    margin-top: 40px;
+}
+
+#city-illustration {
+    bottom: -2px;
+    height: auto;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    width: 100%;
+}
+@keyframes blink {
+    100% {
+        opacity: 1;
+    }
+}
+#window-lights > path {
+    animation: blink 500ms ease infinite;
+    opacity: 0.3;
+}
+#window-lights > path:nth-child(2) {
+    animation-delay: 32ms;
+}
+#window-lights > path:nth-child(3) {
+    animation-delay: 845ms;
+}
+#window-lights > path:nth-child(4) {
+    animation-delay: 46ms;
+}
+#window-lights > path:nth-child(5) {
+    animation-delay: 98ms;
+}
+#window-lights > path:nth-child(6) {
+    animation-delay: 256ms;
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+    .location_book-dj header .container.fix-top-mobile {
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+    }
+
+    .location_book-dj header .container.fix-top-mobile > .row {
+        margin: 0;
+        width: 100vw;
+    }
+
+    .location_book-dj header .container.fix-top-mobile > .row > div {
+        width: 100vw;
+    }
+
+    .location_book-dj header .card {
+        align-items: flex-end;
+        background: rgba(255, 255, 255, 0.96);
+        display: flex;
+        justify-content: space-between;
+        left: 0;
+        padding: 15px;
+        padding-bottom: 2em;
+        padding-top: 0;
+        position: absolute;
+        width: 100vw;
+    }
+
+    .location_book-dj h1 {
+        font-size: 24px;
+        line-height: 1.2em;
+    }
+
+    .location_book-dj header .card p {
+        display: none;
+    }
+
+    .location_book-dj header .card * {
+        margin: 0 !important;
+    }
+
+    .locations-page header .container:before {
+        display: none;
+    }
+
+    .show-tablet-down {
+        background: rgba(49, 217, 255, 0.95);
+        bottom: 0;
+        color: white;
+        padding: 2em 0;
+        position: absolute !important;
+        width: 100%;
+    }
+
+    .show-tablet-down p {
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .locations-page .request-form .col-md-6 {
+        margin-left: 0%;
+    }
+
+    #city-illustration {
+        bottom: -3px;
+        width: 245%;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 420px) {
+    .location_book-dj header button > div {
+        width: 110px !important;
+    }
+}

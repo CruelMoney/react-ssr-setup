@@ -1,43 +1,30 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { hydrate, render } from 'react-dom';
+import * as Sentry from '@sentry/browser';
+import Loadable from 'react-loadable';
+import Router from './BrowserRouter';
 
-import { configureStore } from '../shared/store';
-import App from '../shared/App';
-import IntlProvider from '../shared/i18n/IntlProvider';
-import createHistory from '../shared/store/history';
+const production = process.env.NODE_ENV === 'production';
 
-const history = createHistory();
-
-// Create/use the store
-// history MUST be passed here if you want syncing between server on initial route
-const store =
-    window.store ||
-    configureStore({
-        initialState: window.__PRELOADED_STATE__,
+if (production) {
+    console.log('Initializing Sentry');
+    Sentry.init({
+        enabled: production,
+        dsn: 'https://800ac4dbef6c44bcb65af9fddad9f964@sentry.io/1490082',
+        environment: process.env.REACT_APP_CUEUP_DEV_CALLBACK_DOMAIN,
     });
-
-hydrate(
-    <Provider store={store}>
-        <Router history={history}>
-            <IntlProvider>
-                <HelmetProvider>
-                    <App />
-                </HelmetProvider>
-            </IntlProvider>
-        </Router>
-    </Provider>,
-    document.getElementById('app')
-);
-
-if (process.env.NODE_ENV === 'development') {
-    if (module.hot) {
-        module.hot.accept();
-    }
-
-    if (!window.store) {
-        window.store = store;
-    }
 }
+
+// import registerServiceWorker from "./utils/ServiceWorker";
+
+const rootElement = document.getElementById('app');
+if (rootElement && rootElement.hasChildNodes()) {
+    console.log('hydrating');
+    Loadable.preloadReady().then(() => {
+        hydrate(<Router />, rootElement);
+    });
+} else {
+    render(<Router />, rootElement);
+}
+
+// registerServiceWorker();

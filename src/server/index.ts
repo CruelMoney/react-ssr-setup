@@ -5,6 +5,9 @@ import cors from 'cors';
 import chalk from 'chalk';
 import manifestHelpers from 'express-manifest-helpers';
 import bodyParser from 'body-parser';
+import Loadable from 'react-loadable';
+import cookieParser from 'cookie-parser';
+import addApollo from 'middleware/addApollo';
 import paths from '../../config/paths';
 // import { configureStore } from '../shared/store';
 import errorHandler from './middleware/errorHandler';
@@ -33,6 +36,8 @@ app.get('/locales/refresh', webhookVerification, refreshTranslations);
 // It's probably a good idea to serve these static assets with Nginx or Apache as well:
 app.get('/locales/:locale/:ns.json', i18nextXhr);
 
+app.use(cookieParser());
+app.use(addApollo);
 app.use(addStore);
 
 const manifestPath = path.join(paths.clientBuild, paths.publicPath);
@@ -47,11 +52,13 @@ app.use(serverRenderer());
 
 app.use(errorHandler);
 
-app.listen(process.env.PORT || 8500, () => {
-    console.log(
-        `[${new Date().toISOString()}]`,
-        chalk.blue(`App is running: http://localhost:${process.env.PORT || 8500}`)
-    );
+Loadable.preloadAll().then(() => {
+    app.listen(process.env.PORT || 8500, () => {
+        console.log(
+            `[${new Date().toISOString()}]`,
+            chalk.blue(`App is running: http://localhost:${process.env.PORT || 8500}`)
+        );
+    });
 });
 
 export default app;

@@ -1,0 +1,63 @@
+/* animation: float 6s ease-in-out infinite; */
+@keyframes float {
+    0% {
+        opacity: 1;
+        transform: translatey(0px);
+    }
+    50% {
+        opacity: 1;
+        transform: translatey(-20px);
+    }
+    100% {
+        opacity: 1;
+
+        transform: translatey(0px);
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0%);
+    }
+    100% {
+        transform: translate(-50%);
+    }
+}
+
+.floating-cards-wrapper {
+    background: #f7f9fc;
+    overflow: hidden;
+}
+.floating-cards {
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    display: table;
+    margin: auto;
+    position: relative;
+    width: auto;
+}
+
+.floating-cards .card {
+    overflow: visible;
+}
+.floating-cards .card-wrapper {
+    display: table-cell;
+    opacity: 1;
+    padding: 4em 0;
+    padding-top: 10em;
+    position: relative;
+}
+.floating-cards .card-wrapper .card {
+    animation: float 6s ease-in-out infinite;
+    margin: 0em 1em;
+}
+.floating-cards .card-wrapper:nth-child(even) .card {
+    animation-delay: 1000ms;
+}
+.floating-cards .card-wrapper:nth-child(even) {
+    margin-top: 2em;
+}
+.floating-cards .card .profile-picture {
+    border-radius: 6px 0 0 6px;
+    overflow: hidden;
+}

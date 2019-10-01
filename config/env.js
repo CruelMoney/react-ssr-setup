@@ -36,11 +36,25 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
 module.exports = () => {
     // define env vars you want to use in your client app here.
     // CAREFUL: don't use any secrets like api keys or database passwords as they are exposed publicly!
+
+    const customEnv = Object.keys(process.env)
+        .filter((key) => key.includes('REACT_APP'))
+        .reduce(
+            (ee, key) => ({
+                ...ee,
+                [key]: process.env[key],
+            }),
+            {}
+        );
+
     const raw = {
+        ...customEnv,
         PORT: process.env.PORT || 8500,
         NODE_ENV: process.env.NODE_ENV || 'development',
         HOST: process.env.HOST || 'http://localhost',
     };
+
+    console.log({ env: raw });
 
     // Stringify all values so we can feed into Webpack DefinePlugin
     const stringified = {

@@ -19,7 +19,7 @@ http {
     port_in_redirect off;
 
     location / {
-        root /app/www/build/client;
+        root /app/www;
         try_files $uri @express;
         expires 1y;
         add_header Pragma public;

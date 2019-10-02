@@ -7,8 +7,6 @@ import fetch from 'node-fetch';
 import resolvers from '../../shared/actions/resolvers';
 
 const addApollo = (_req, res, next) => {
-    console.log('Setting up apollo for: ', process.env.REACT_APP_CUEUP_GQL_DOMAIN);
-
     const httpLink = createHttpLink({
         fetch: fetch,
         uri: process.env.REACT_APP_CUEUP_GQL_DOMAIN,

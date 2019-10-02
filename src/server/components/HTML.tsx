@@ -17,7 +17,6 @@ const HTML = ({
     state = '{}',
     apolloState,
     helmetContext: { helmet },
-    headerChildren,
 }: Props) => (
     <html lang="">
         <head>
@@ -42,8 +41,8 @@ const HTML = ({
                     // TODO: Add jsesc/stringify here
                     // see: https://twitter.com/HenrikJoreteg/status/1143953338284703744
                     __html: `
+                    window.__APOLLO_STATE__ = ${apolloState};
                     window.__PRELOADED_STATE__ = ${state};
-                    window.__PRELOADED_STATE__ = ${apolloState};
                     `,
                 }}
             />

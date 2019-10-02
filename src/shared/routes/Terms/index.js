@@ -9,9 +9,8 @@ const Loader = () => (
 );
 
 const AsyncTerms = Loadable({
-    loader: () => import(/* webpackChunkName: "termsChunk" */ './Terms'),
+    loader: () => import('./Terms'),
     loading: Loader,
-    modules: ['termsChunk'],
 });
 
 export default AsyncTerms;

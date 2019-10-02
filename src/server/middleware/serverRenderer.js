@@ -29,13 +29,13 @@ const serverRenderer = () => async (req, res) => {
         </ApolloProvider>
     );
 
-    const apolloState = {};
-    // try {
-    //     await getDataFromTree(Content);
-    //     apolloState = res.locals.apolloClient.extract();
-    // } catch (error) {
-    //     console.log({ error });
-    // }
+    let apolloState = {};
+    try {
+        await getDataFromTree(Content);
+        apolloState = res.locals.apolloClient.extract();
+    } catch (error) {
+        console.log({ error });
+    }
 
     const content = renderToString(Content);
     const styleTags = sheet.getStyleElement();
@@ -44,7 +44,6 @@ const serverRenderer = () => async (req, res) => {
     const state = JSON.stringify(res.locals.store.getState());
     const css = [res.locals.assetPath('bundle.css'), res.locals.assetPath('vendor.css')];
 
-    console.log({ css });
     return res.send(
         '<!doctype html>' +
             renderToString(

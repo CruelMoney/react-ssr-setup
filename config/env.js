@@ -54,8 +54,6 @@ module.exports = () => {
         HOST: process.env.HOST || 'http://localhost',
     };
 
-    console.log({ env: raw });
-
     // Stringify all values so we can feed into Webpack DefinePlugin
     const stringified = {
         'process.env': Object.keys(raw).reduce((env, key) => {

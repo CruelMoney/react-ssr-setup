@@ -36,7 +36,10 @@ const client = [
         __BROWSER__: 'true',
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new ManifestPlugin({ fileName: 'manifest.json' }),
+    new ManifestPlugin({
+        fileName: 'manifest.json',
+        publicPath: paths.publicPath,
+    }),
 ].filter(Boolean);
 
 const server = [

@@ -27,7 +27,7 @@ http {
         try_files $uri $uri/ @express;
     }
     
-    location @express {
+    location / {
         proxy_pass http://express;
   
         proxy_set_header Upgrade           $http_upgrade;

@@ -1,2 +1,2 @@
-worker: yarn start
-web: bin/boot
+express: yarn start
+web: /app/start_nginx

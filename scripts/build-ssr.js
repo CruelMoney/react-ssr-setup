@@ -80,7 +80,7 @@ const build = async () => {
     try {
         await serverPromise;
         await clientPromise;
-        await generateStaticHTML();
+        //  await generateStaticHTML();
         logMessage('Done!', 'info');
     } catch (error) {
         logMessage(error, 'error');

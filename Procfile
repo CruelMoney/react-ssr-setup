@@ -1,2 +1,2 @@
-express: cd /app/www && yarn start
+express: node /app/www/build/server/server.js
 web: /app/start_nginx

@@ -1,3 +1,8 @@
 {
-  "root": "build/client"
+  "root": "build/client",
+  "headers": {
+    "/static/**": {
+      "Cache-Control": "public, max-age=31536000"
+    }
+  }
 }

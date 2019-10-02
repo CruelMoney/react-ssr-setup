@@ -17,11 +17,12 @@ http {
   server {
     listen {{ $.PORT }};
     server_name  _;
-    root /app/build/client;
     port_in_redirect off;
 
     location / {
-        try_files $uri @backend;
+        root /app/build/client;
+        index index.html;
+        try_files $uri $uri/ @backend;
     }
     
     location @backend {

@@ -92,7 +92,7 @@ module.exports = {
             chunks: 'all',
             name: false,
         },
-        // Keep the runtime chunk separated to enable long term caching
+        // Keep the runtime chunk separated to enable long term cagitching
         // https://twitter.com/wSokra/status/969679223278505985
         // https://github.com/facebook/create-react-app/issues/5358
         runtimeChunk: {

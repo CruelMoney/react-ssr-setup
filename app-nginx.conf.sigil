@@ -20,6 +20,9 @@ http {
 
     location / {
         root /app/www/build/client;
+        expires 1y;
+        add_header Pragma public;
+        add_header Cache-Control "public";
         try_files $uri $uri/ @express;
     }
     

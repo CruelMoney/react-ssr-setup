@@ -1,3 +1,4 @@
-import Location from './Location';
+import loadable from '@loadable/component';
+const LazyLocation = loadable(() => import('./Location'));
 
-export default Location;
+export default LazyLocation;

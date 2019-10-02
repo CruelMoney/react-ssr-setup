@@ -7,9 +7,16 @@ events {
   worker_connections 768;
 }
 
+
+
 http {
   types_hash_max_size 2048;
   include mime.types;
+
+  upstream express {
+    server localhost:3000;
+  }
+
   server {
     listen {{ $.PORT }};
     server_name  _;
@@ -17,12 +24,11 @@ http {
 
     location / {
         root /app/www/build/client;
-        index index.html;
-        try_files $uri $uri/ @backend;
+        try_files $uri $uri/ @express;
     }
     
-    location @backend {
-        proxy_pass localhost:3000;
+    location @express {
+        proxy_pass http://express;
   
         proxy_set_header Upgrade           $http_upgrade;
         proxy_set_header Connection        "upgrade";

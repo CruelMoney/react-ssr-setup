@@ -8,11 +8,13 @@ type Props = {
     state: string;
     apolloState: string;
     headerChildren: any;
+    styleTags: any[];
 };
 
 const HTML = ({
     children,
     myCss = [],
+    styleTags = [],
     scripts = [],
     state = '{}',
     apolloState,
@@ -34,7 +36,7 @@ const HTML = ({
             {myCss.filter(Boolean).map((href) => (
                 <link key={href} rel="stylesheet" href={href} />
             ))}
-
+            {styleTags.filter(Boolean).map((tag) => tag)}
             <script
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{

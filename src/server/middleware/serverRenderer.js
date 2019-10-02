@@ -51,8 +51,8 @@ const serverRenderer = () => async (req, res) => {
                     helmetContext={helmetContext}
                     state={state}
                     apolloState={JSON.stringify(apolloState)}
-                    headerChildren={styleTags}
                     myCss={css}
+                    styleTags={styleTags}
                     scripts={[res.locals.assetPath('bundle.js'), res.locals.assetPath('vendor.js')]}
                 >
                     {content}

@@ -161,6 +161,7 @@ const AvatarWrapper = styled.div`
     min-height: ${({ size }) => avatarSizes[size] || '30px'};
     height: ${({ size }) => avatarSizes[size] || '30px'};
     overflow: hidden;
+    position: relative;
 `;
 
 export const Avatar = ({ size, style, className, ...props }) => (

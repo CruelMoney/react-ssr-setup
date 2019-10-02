@@ -20,10 +20,10 @@ http {
 
     location / {
         root /app/www/build/client;
+        try_files $uri @express;
         expires 1y;
         add_header Pragma public;
         add_header Cache-Control "public";
-        try_files $uri $uri/ @express;
     }
     
     location @express {

@@ -2,7 +2,6 @@ node_modules
 logs/*.log
 /.vagrant
 .webpack-cache
-public
 npm-debug.log
 .ssh
 node_modules_*

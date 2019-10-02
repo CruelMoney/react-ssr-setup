@@ -20,7 +20,7 @@ http {
     port_in_redirect off;
 
     location / {
-        root /app/build/client;
+        root /app/www/build/client;
         index index.html;
         try_files $uri $uri/ @backend;
     }

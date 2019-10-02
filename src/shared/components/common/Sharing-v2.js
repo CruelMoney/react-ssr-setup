@@ -14,21 +14,22 @@ import { Environment } from '../../constants/constants';
 
 class Sharing extends Component {
     render() {
-        let { shareUrl, title } = this.props;
-        shareUrl = String(Environment.CALLBACK_DOMAIN) + String(shareUrl);
+        const { shareUrl, title } = this.props;
+        let url = String(Environment.CALLBACK_DOMAIN);
+        url += String(shareUrl);
 
         return (
             <div className="share-buttons">
-                <FacebookShareButton url={shareUrl} className="share-button" quote={title}>
+                <FacebookShareButton url={url} className="share-button" quote={title}>
                     <FacebookIcon size={32} round />
                     <span>Share</span>
                 </FacebookShareButton>
-                <TwitterShareButton url={shareUrl} className="share-button" title={title}>
+                <TwitterShareButton url={url} className="share-button" title={title}>
                     <TwitterIcon size={32} round />
                     <span>Tweet</span>
                 </TwitterShareButton>
                 <LinkedinShareButton
-                    url={shareUrl}
+                    url={url}
                     className="share-button"
                     title={title}
                     windowWidth={750}
@@ -37,12 +38,7 @@ class Sharing extends Component {
                     <LinkedinIcon size={32} round />
                     <span>Share</span>
                 </LinkedinShareButton>
-                <EmailShareButton
-                    url={shareUrl}
-                    className="share-button"
-                    subject={title}
-                    body={shareUrl}
-                >
+                <EmailShareButton url={url} className="share-button" subject={title} body={url}>
                     <EmailIcon size={32} round />
                     <span>Email</span>
                 </EmailShareButton>
@@ -54,7 +50,9 @@ class Sharing extends Component {
 export default Sharing;
 
 const SimpleSharing = ({ shareUrl, title, style, label = 'Share profile' }) => {
-    const url = String(Environment.CALLBACK_DOMAIN) + String(shareUrl);
+    let url = String(Environment.CALLBACK_DOMAIN);
+    url += String(shareUrl);
+
     const share = () => {
         if (navigator.share) {
             navigator
@@ -87,7 +85,7 @@ const SimpleSharing = ({ shareUrl, title, style, label = 'Share profile' }) => {
             </p>
             <TwitterShareButton
                 style={{ background: 'transparent', width: 24 }}
-                url={shareUrl}
+                url={url}
                 title={title}
             >
                 <TwitterIcon

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Spinner } from 'react-activity';
 import 'react-activity/lib/Spinner/Spinner.css';
@@ -12,12 +12,14 @@ const Notification = ({
     message = 'You have no new notifications',
 }) => {
     const [show, setShow] = useState(false);
+    const portal = useRef();
 
     useEffect(() => {
+        portal.current = document.querySelector('#notification-portal');
         setShow(true);
     }, []);
 
-    if (!show) {
+    if (!show || !portal.current) {
         return null;
     }
 
@@ -34,7 +36,7 @@ const Notification = ({
                 </div>
             </div>
         </div>,
-        document.querySelector('#notification-portal')
+        portal.current
     );
 };
 

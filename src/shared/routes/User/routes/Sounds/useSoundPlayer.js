@@ -126,7 +126,6 @@ const useHowlWrapper = (src, soundId, data) => {
         return existingTrack;
     }
 
-    console.log('creating new howl');
     const stopOtherTracks = () => tracks.forEach((track) => track.id !== soundId && track.pause());
 
     let onplay = [stopOtherTracks, logPlay];

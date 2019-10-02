@@ -53,11 +53,11 @@ const HTML = ({
             {scripts.filter(Boolean).map((src) => (
                 <script key={src} src={src} />
             ))}
-        </body>
 
-        <div id="tooltip-portal" />
-        <div id="mobile-menu-portal" />
-        <div id="notification-portal" />
+            <div id="tooltip-portal" />
+            <div id="mobile-menu-portal" />
+            <div id="notification-portal" />
+        </body>
     </html>
 );
 

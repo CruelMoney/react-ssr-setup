@@ -7,14 +7,21 @@ import fetch from 'node-fetch';
 import resolvers from '../../shared/actions/resolvers';
 
 const addApollo = (_req, res, next) => {
+    const headers = {
+        origin: process.env.WEBSITE_URL,
+    };
+
+    const xToken = _req.cookies['x-token'];
+
+    if (xToken) {
+        headers['x-token'] = xToken; // forward token
+    }
+
     const httpLink = createHttpLink({
         fetch: fetch,
         uri: process.env.REACT_APP_CUEUP_GQL_DOMAIN,
         credentials: 'include',
-        headers: {
-            'x-token': _req.cookies['x-token'], // forward token
-            'origin': process.env.WEBSITE_URL,
-        },
+        headers,
     });
 
     const link = ApolloLink.from([errorLink, httpLink]);

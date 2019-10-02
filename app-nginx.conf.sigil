@@ -13,10 +13,6 @@ http {
   types_hash_max_size 2048;
   include mime.types;
 
-  upstream express {
-    server localhost:3000;
-  }
-
   server {
     listen {{ $.PORT }};
     server_name  _;
@@ -27,8 +23,8 @@ http {
         try_files $uri $uri/ @express;
     }
     
-    location / {
-        proxy_pass http://express;
+    location @express {
+        proxy_pass http://localhost:3000;
   
         proxy_set_header Upgrade           $http_upgrade;
         proxy_set_header Connection        "upgrade";

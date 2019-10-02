@@ -468,7 +468,7 @@ const Images = ({ renderMedia, isOwn, deleteFile, updateFilesOrder, children }) 
         .map((file, idx) => ({
             id: file.id || idx,
             content: (
-                <Cell style={getCellStyle(idx)}>
+                <Cell key={file.id || idx} style={getCellStyle(idx)}>
                     {file.data && file.data.instagram && <InstaIndicator />}
                     {file.data && file.data.instagram && <InstaCaption>{file.name}</InstaCaption>}
                     {file.type === 'IMAGE' ? (

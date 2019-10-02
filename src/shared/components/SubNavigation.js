@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useContext, useEffect, memo, useCallback } from 'react';
+import React, { useRef, useEffect, useContext, memo, useCallback } from 'react';
 import styled from 'styled-components';
 import { NavLink, withRouter } from 'react-router-dom';
 import { MobileMenuContext } from './MobileMenu';
@@ -81,7 +81,7 @@ const Navigation = memo((props) => {
         };
     }, [routes, registerRoutes, unregisterRoutes]);
 
-    useLayoutEffect(resetIndicator, [routes]);
+    useEffect(resetIndicator, [routes]);
 
     // change active indicator if navigated
     useEffect(() => {

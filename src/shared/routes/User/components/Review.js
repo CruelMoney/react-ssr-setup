@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
 import styled from 'styled-components';
@@ -27,6 +27,7 @@ const Review = ({
     const [virtualReferenceElement, setVirtualReferenceElement] = useState(null);
     const [selection, setSelection] = useState(null);
     const [mounted, setMounted] = useState(false);
+    const portal = useRef();
 
     const [addHighlight, { loading, data: hasAdded }] = useMutation(HIGHLIGHT_REVIEW, {
         update: () => {
@@ -40,6 +41,7 @@ const Review = ({
 
     useEffect(() => {
         setMounted(true);
+        portal.current = document.querySelector('#tooltip-portal');
     }, []);
 
     useEffect(() => {
@@ -86,6 +88,7 @@ const Review = ({
                 </Col>
             </Row>
             {mounted &&
+                portal.current &&
                 ReactDOM.createPortal(
                     <ToolTip
                         virtualReferenceElement={virtualReferenceElement}
@@ -93,7 +96,7 @@ const Review = ({
                         loading={loading}
                         addHighlight={addHighlight}
                     />,
-                    document.querySelector('#tooltip-portal')
+                    portal
                 )}
         </ReviewWrapper>
     );

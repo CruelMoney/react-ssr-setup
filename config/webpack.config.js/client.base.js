@@ -19,7 +19,7 @@ module.exports = {
     output: {
         path: path.join(paths.clientBuild, paths.publicPath),
         filename: 'bundle.js',
-        publicPath: '/static/',
+        publicPath: paths.publicPath,
         chunkFilename: '[name].[chunkhash:8].chunk.js',
     },
     module: {

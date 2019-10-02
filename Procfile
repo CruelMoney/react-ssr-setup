@@ -1,2 +1,2 @@
-web: yarn start
+express: yarn start
 web: bin/boot

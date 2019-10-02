@@ -10,7 +10,7 @@ import CitySvg from '../../components/graphics/City';
 import addTranslate from '../../components/higher-order/addTranslate';
 import { Environment } from '../../constants/constants';
 import ScrollToTop from '../../components/common/ScrollToTop';
-import AsyncRequestForm from '../../components/common/RequestForm/RequestForm';
+import AsyncRequestForm from '../../components/common/RequestForm';
 import FloatingDJs from './components/FloatingCards';
 import content from './content.json';
 import locations from './locations';

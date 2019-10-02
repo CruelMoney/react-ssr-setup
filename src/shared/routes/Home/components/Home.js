@@ -4,7 +4,7 @@ import Footer from '../../../components/common/Footer';
 import Button from '../../../components/common/Button-v2';
 import padlock from '../../../assets/padlock.svg';
 import note from '../../../assets/note.svg';
-import RequestForm from '../../../components/common/RequestForm/RequestForm';
+import RequestForm from '../../../components/common/RequestForm';
 import DJCards from './djCards';
 
 class Home extends Component {

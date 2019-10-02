@@ -22,9 +22,7 @@ const Header = ({ theEvent, loading }) => {
                 <Row className="wrapper">
                     <FullWidthCol>
                         {loading ? null : <Content theEvent={theEvent} />}
-                        {typeof document !== 'undefined' && (
-                            <Navigation routes={routes} mobileLabel="Event" />
-                        )}
+                        <Navigation routes={routes} mobileLabel="Event" />
                     </FullWidthCol>
                 </Row>
             </Container>

@@ -97,9 +97,7 @@ const Header = ({ user, loading, pathname, children }) => {
                     <HeaderSpacing />
                     <FullWidthCol>
                         {loading ? null : <UserContent user={user} />}
-                        {typeof document !== 'undefined' && (
-                            <Navigation routes={getRoutesFromUser(user, pathname)} />
-                        )}
+                        <Navigation routes={getRoutesFromUser(user, pathname)} />
                     </FullWidthCol>
                 </Row>
             </Container>

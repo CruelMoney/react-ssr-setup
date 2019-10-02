@@ -29,9 +29,7 @@ const Header = (props) => {
                 <Row className="wrapper">
                     <CustomCol>
                         {props.loading ? null : <Content {...props} />}
-                        {typeof document !== 'undefined' && (
-                            <Navigation routes={routes} mobileLabel="Event" showMobile />
-                        )}
+                        <Navigation routes={routes} mobileLabel="Event" showMobile />
                     </CustomCol>
                     <Spacing large />
                 </Row>

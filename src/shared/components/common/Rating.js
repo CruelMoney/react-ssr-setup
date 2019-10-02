@@ -15,8 +15,7 @@ class Star extends Component {
     };
 
     render() {
-        const fillID =
-            'gradient-' + this.props.fillPercentage + '-' + this.props.index + '-' + Math.random();
+        const fillID = 'gradient-' + this.props.fillPercentage + '-' + this.props.index;
         const fillStyle = { fill: 'url(#' + fillID + ')' };
         return (
             <div

@@ -3,6 +3,10 @@ const generateSourceMap = process.env.OMIT_SOURCEMAP === 'true' ? false : true;
 
 const config = {
     ...baseConfig,
+    optimization: {
+        ...baseConfig.optimization,
+        minimize: true,
+    },
     mode: 'production',
     devtool: generateSourceMap ? 'source-map' : false,
 };

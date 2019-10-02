@@ -11,8 +11,8 @@ module.exports = {
     target: 'web',
     entry: {
         bundle: [
-            require.resolve('core-js/stable'),
-            require.resolve('regenerator-runtime/runtime'),
+            // require.resolve('core-js/stable'),
+            // require.resolve('regenerator-runtime/runtime'),
             paths.srcClient,
         ],
     },
@@ -28,8 +28,11 @@ module.exports = {
     resolve: { ...resolvers },
     plugins: [...plugins.shared, ...plugins.client],
     node: {
+        module: 'empty',
         dgram: 'empty',
+        dns: 'mock',
         fs: 'empty',
+        http2: 'empty',
         net: 'empty',
         tls: 'empty',
         child_process: 'empty',
@@ -82,14 +85,18 @@ module.exports = {
         ],
         namedModules: true,
         noEmitOnErrors: true,
+        // Automatically split vendor and commons
+        // https://twitter.com/wSokra/status/969633336732905474
+        // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
         splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendor',
-                    chunks: 'all',
-                },
-            },
+            chunks: 'all',
+            name: 'vendor', // TODO name should be set to false here, but it didn't work
+        },
+        // Keep the runtime chunk separated to enable long term caching
+        // https://twitter.com/wSokra/status/969679223278505985
+        // https://github.com/facebook/create-react-app/issues/5358
+        runtimeChunk: {
+            name: (entrypoint) => `runtime-${entrypoint.name}`,
         },
     },
     stats: {

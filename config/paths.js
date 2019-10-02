@@ -19,11 +19,11 @@ const paths = {
 };
 
 paths.resolveModules = [
+    'node_modules',
     paths.srcClient,
     paths.srcServer,
     paths.srcShared,
     paths.src,
-    'node_modules',
 ];
 
 module.exports = paths;

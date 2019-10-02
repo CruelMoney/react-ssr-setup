@@ -53,7 +53,11 @@ const serverRenderer = () => async (req, res) => {
                     apolloState={JSON.stringify(apolloState)}
                     myCss={css}
                     styleTags={styleTags}
-                    scripts={[res.locals.assetPath('bundle.js'), res.locals.assetPath('vendor.js')]}
+                    scripts={[
+                        res.locals.assetPath('runtime-bundle.js'),
+                        res.locals.assetPath('bundle.js'),
+                        res.locals.assetPath('vendor.js'),
+                    ]}
                 >
                     {content}
                 </Html>

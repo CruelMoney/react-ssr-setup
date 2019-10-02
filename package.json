@@ -4,7 +4,7 @@
   "author": "Manuel Bieh <npm@manuelbieh.de> (https://github.com/manuelbieh)",
   "license": "MIT",
   "engines": {
-    "node": ">=8.11.3",
+    "node": ">=10.0.0",
     "yarn": "^1.12.3"
   },
   "scripts": {

@@ -1,2 +1,2 @@
-express: yarn start
+worker: yarn start
 web: bin/boot

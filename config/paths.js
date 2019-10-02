@@ -16,6 +16,7 @@ const paths = {
     types: resolveApp('node_modules/@types'),
     locales: resolveApp('src/shared/i18n/locales'),
     publicPath: '/static/',
+    publicDev: resolveApp('public'),
 };
 
 paths.resolveModules = [

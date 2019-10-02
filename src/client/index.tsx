@@ -1,6 +1,7 @@
 import React from 'react';
 import { hydrate, render } from 'react-dom';
 import * as Sentry from '@sentry/browser';
+import { loadableReady } from '@loadable/component';
 import Router from './BrowserRouter';
 
 const production = process.env.NODE_ENV === 'production';
@@ -18,8 +19,10 @@ if (production) {
 
 const rootElement = document.getElementById('app');
 if (rootElement && rootElement.hasChildNodes()) {
-    console.log('hydrating');
-    hydrate(<Router />, rootElement);
+    loadableReady().then(() => {
+        console.log('hydrating');
+        hydrate(<Router />, rootElement);
+    });
 } else {
     render(<Router />, rootElement);
 }

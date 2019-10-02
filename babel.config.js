@@ -14,6 +14,7 @@ module.exports = {
         '@babel/typescript',
     ],
     plugins: [
+        '@loadable/babel-plugin',
         '@babel/proposal-object-rest-spread',
         '@babel/proposal-class-properties',
         '@babel/proposal-optional-chaining',
@@ -24,6 +25,7 @@ module.exports = {
     env: {
         test: {
             plugins: [
+                '@loadable/babel-plugin',
                 '@babel/transform-modules-commonjs',
                 '@babel/syntax-dynamic-import',
                 '@babel/plugin-transform-runtime',

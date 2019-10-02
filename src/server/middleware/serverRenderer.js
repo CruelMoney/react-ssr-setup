@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 import { getDataFromTree } from '@apollo/react-ssr';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import { ChunkExtractorManager } from '@loadable/server';
 import { ApolloProvider } from 'react-apollo';
 import App from '../../shared/App';
 import Html from '../components/HTML';
@@ -17,15 +18,17 @@ const serverRenderer = () => async (req, res) => {
 
     const Content = (
         <ApolloProvider client={res.locals.apolloClient}>
-            <StyleSheetManager sheet={sheet.instance}>
-                <Provider store={res.locals.store}>
-                    <StaticRouter location={req.url} context={routerContext}>
-                        <HelmetProvider context={helmetContext}>
-                            <App />
-                        </HelmetProvider>
-                    </StaticRouter>
-                </Provider>
-            </StyleSheetManager>
+            <ChunkExtractorManager extractor={res.locals.chunkExtractor}>
+                <StyleSheetManager sheet={sheet.instance}>
+                    <Provider store={res.locals.store}>
+                        <StaticRouter location={req.url} context={routerContext}>
+                            <HelmetProvider context={helmetContext}>
+                                <App />
+                            </HelmetProvider>
+                        </StaticRouter>
+                    </Provider>
+                </StyleSheetManager>
+            </ChunkExtractorManager>
         </ApolloProvider>
     );
 
@@ -44,6 +47,8 @@ const serverRenderer = () => async (req, res) => {
     const state = JSON.stringify(res.locals.store.getState());
     const css = [res.locals.assetPath('bundle.css'), res.locals.assetPath('vendor.css')];
 
+    const scriptTags = res.locals.chunkExtractor.getScriptElements();
+
     return res.send(
         '<!doctype html>' +
             renderToString(
@@ -53,11 +58,7 @@ const serverRenderer = () => async (req, res) => {
                     apolloState={JSON.stringify(apolloState)}
                     myCss={css}
                     styleTags={styleTags}
-                    scripts={[
-                        res.locals.assetPath('runtime-bundle.js'),
-                        res.locals.assetPath('bundle.js'),
-                        res.locals.assetPath('vendor.js'),
-                    ]}
+                    scriptTags={scriptTags}
                 >
                     {content}
                 </Html>

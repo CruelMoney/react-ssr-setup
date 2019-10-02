@@ -20,6 +20,7 @@ const babelLoader = {
     loader: require.resolve('babel-loader'),
     options: {
         plugins: [
+            '@loadable/babel-plugin',
             [
                 require.resolve('babel-plugin-named-asset-import'),
                 {

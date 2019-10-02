@@ -9,12 +9,14 @@ type Props = {
     apolloState: string;
     headerChildren: any;
     styleTags: any[];
+    scriptTags: any[];
 };
 
 const HTML = ({
     children,
     myCss = [],
     styleTags = [],
+    scriptTags = [],
     scripts = [],
     state = '{}',
     apolloState,
@@ -55,6 +57,7 @@ const HTML = ({
             {scripts.filter(Boolean).map((src) => (
                 <script key={src} src={src} />
             ))}
+            {scriptTags.filter(Boolean).map((tag) => tag)}
 
             <div id="tooltip-portal" />
             <div id="mobile-menu-portal" />

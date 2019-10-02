@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const paths = require('../paths');
 const { clientOnly } = require('../../scripts/utils');
 
@@ -17,6 +18,7 @@ const shared = [
         chunkFilename:
             process.env.NODE_ENV === 'development' ? '[id].css' : '[id].[contenthash].css',
     }),
+    new LoadablePlugin(),
 ];
 
 const client = [

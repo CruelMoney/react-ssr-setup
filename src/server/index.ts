@@ -7,6 +7,7 @@ import manifestHelpers from 'express-manifest-helpers';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import addApollo from 'middleware/addApollo';
+import addLoadableExtractor from 'middleware/addLoadableExtractor';
 import paths from '../../config/paths';
 // import { configureStore } from '../shared/store';
 import errorHandler from './middleware/errorHandler';
@@ -29,15 +30,12 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.get('/locales/refresh', webhookVerification, refreshTranslations);
 
 // It's probably a good idea to serve these static assets with Nginx or Apache as well:
 app.get('/locales/:locale/:ns.json', i18nextXhr);
-
-app.use(cookieParser());
-app.use(addApollo);
-app.use(addStore);
 
 const manifestPath = path.join(paths.clientBuild, paths.publicPath);
 
@@ -46,6 +44,10 @@ app.use(
         manifestPath: `${manifestPath}/manifest.json`,
     })
 );
+
+app.use(addApollo);
+app.use(addStore);
+app.use(addLoadableExtractor);
 
 app.use(serverRenderer());
 

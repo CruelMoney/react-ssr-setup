@@ -1,5 +1,5 @@
 import React from 'react';
-import Loadable from 'react-loadable';
+import loadable from '@loadable/component';
 import { LoadingPlaceholder2 } from '../../components/common/LoadingPlaceholder';
 
 const Loader = () => (
@@ -8,9 +8,8 @@ const Loader = () => (
     </div>
 );
 
-const AsyncTerms = Loadable({
-    loader: () => import('./Terms'),
-    loading: Loader,
+const AsyncTerms = loadable(() => import('./Terms'), {
+    fallback: <Loader />,
 });
 
 export default AsyncTerms;

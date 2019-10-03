@@ -13,10 +13,7 @@ http {
   types_hash_max_size 2048;
   include mime.types;
 
-  upstream backend {
-      server {{$.DOKKU_PROXY_ADDRESS}};
-  }
-
+  
 
   server {
     listen {{ $.PORT }};
@@ -34,7 +31,7 @@ http {
     location @express {
         resolver 127.0.0.11 valid=30s;
 
-        set $upstream http://backend;
+        set $upstream http://{{$.DOKKU_PROXY_ADDRESS}};
 
         proxy_pass $upstream;
   

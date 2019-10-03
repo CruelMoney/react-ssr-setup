@@ -1,2 +1,1 @@
-express: yarn start
-web: /app/start_nginx
+web: /app/start_nginx & yarn start & wait -n

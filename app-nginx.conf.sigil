@@ -27,7 +27,7 @@ http {
     }
     
     location @express {
-        proxy_pass http://{{.APP}}.express.1:3000;
+        proxy_pass http://$.APP.express.1:3000;
   
         proxy_set_header Upgrade           $http_upgrade;
         proxy_set_header Connection        "upgrade";

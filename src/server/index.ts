@@ -46,7 +46,7 @@ app.use(
     })
 );
 
-app.use(addRedis);
+addRedis(app);
 app.use(addApollo);
 app.use(addStore);
 app.use(addLoadableExtractor);

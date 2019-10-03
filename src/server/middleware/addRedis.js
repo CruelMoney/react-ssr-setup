@@ -10,14 +10,14 @@ const options = {
 };
 if (redisUrl) {
     redisUrl = url.parse(redisUrl);
-    options.host = redisUrl.host;
+    options.host = redisUrl.hostname;
     options.port = redisUrl.port;
     options.auth_pass = redisUrl.password;
 }
 const cache = redis(options);
 
-const addRedis = (req, res, next) => {
-    cache.route()(req, res, next);
+const addRedis = (app) => {
+    app.get(cache.route());
 };
 
 export default addRedis;

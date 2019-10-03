@@ -1,5 +1,5 @@
 import path from 'path';
-import url from 'url';
+import { URL } from 'url';
 import redis from 'express-redis-cache';
 import paths from '../../../config/paths';
 
@@ -7,11 +7,12 @@ import paths from '../../../config/paths';
 let redisUrl = process.env.REDIS_URL;
 const options = {};
 if (redisUrl) {
-    redisUrl = url.parse(redisUrl);
+    redisUrl = new URL(redisUrl);
     options.host = redisUrl.hostname;
     options.port = redisUrl.port;
     options.auth_pass = redisUrl.password;
 }
+
 const cache = redis(options);
 
 if (process.env.NODE_ENV === 'development') {

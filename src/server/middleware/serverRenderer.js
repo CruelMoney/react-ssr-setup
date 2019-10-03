@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
-import { getDataFromTree } from '@apollo/react-ssr';
+import { renderToStringWithData } from '@apollo/react-ssr';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import { ChunkExtractorManager } from '@loadable/server';
 import { ApolloProvider } from 'react-apollo';
@@ -32,15 +32,17 @@ const serverRenderer = () => async (req, res) => {
         </ApolloProvider>
     );
 
+    let content = null;
+
     let apolloState = {};
     try {
-        await getDataFromTree(Content);
+        content = await renderToStringWithData(Content);
         apolloState = res.locals.apolloClient.extract();
     } catch (error) {
         console.log({ error });
+        content = renderToString(Content);
     }
 
-    const content = renderToString(Content);
     const styleTags = sheet.getStyleElement();
     sheet.seal();
 
@@ -52,8 +54,8 @@ const serverRenderer = () => async (req, res) => {
     const html = renderToString(
         <Html
             helmetContext={helmetContext}
-            state={state}
-            apolloState={JSON.stringify(apolloState)}
+            state={JSON.stringify(state).replace(/</g, '\\u003c')}
+            apolloState={JSON.stringify(apolloState).replace(/</g, '\\u003c')}
             myCss={css}
             styleTags={styleTags}
             scriptTags={scriptTags}

@@ -46,7 +46,7 @@ const serverRenderer = () => async (req, res) => {
     const styleTags = sheet.getStyleElement();
     sheet.seal();
 
-    const state = JSON.stringify(res.locals.store.getState());
+    const state = res.locals.store.getState();
     const css = [res.locals.assetPath('bundle.css'), res.locals.assetPath('vendor.css')];
 
     const scriptTags = res.locals.chunkExtractor.getScriptElements();

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 import shuffle from 'lodash/shuffle';
 import { DJs } from '../../../../constants/constants';
 import DJCard from '../../../../components/common/DJCard';
 
 export default () => {
-    const [cards] = useState(DJs);
+    const [cards, setCards] = useState(DJs);
 
+    useEffect(() => {
+        setCards(shuffle(DJs));
+    }, []);
     return (
         <div className="dj-cards">
             <div>

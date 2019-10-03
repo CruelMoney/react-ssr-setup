@@ -13,6 +13,11 @@ http {
   types_hash_max_size 2048;
   include mime.types;
 
+  upstream backend {
+      server {{$.DOKKU_PROXY_ADDRESS}};
+  }
+
+
   server {
     listen {{ $.PORT }};
     server_name  _;
@@ -27,7 +32,7 @@ http {
     }
     
     location @express {
-        proxy_pass http://{{$.DOKKU_PROXY_ADDRESS}};
+        proxy_pass http://backend;
   
         proxy_set_header Upgrade           $http_upgrade;
         proxy_set_header Connection        "upgrade";

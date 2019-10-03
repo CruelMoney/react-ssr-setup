@@ -26,9 +26,8 @@ http {
         add_header Cache-Control "public";
     }
     
-    # app DOKKU_PROXY_ADDRESS {{ $.DOKKU_PROXY_ADDRESS }}
     location @express {
-        proxy_pass http://localhost:3000;
+        proxy_pass http://{{$.DOKKU_PROXY_ADDRESS}};
   
         proxy_set_header Upgrade           $http_upgrade;
         proxy_set_header Connection        "upgrade";

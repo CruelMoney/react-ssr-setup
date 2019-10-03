@@ -32,7 +32,9 @@ http {
     }
     
     location @express {
-        proxy_pass http://backend;
+        set $upstream http://backend;
+
+        proxy_pass $upstream;
   
         proxy_set_header Upgrade           $http_upgrade;
         proxy_set_header Connection        "upgrade";

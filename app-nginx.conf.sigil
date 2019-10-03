@@ -32,6 +32,8 @@ http {
     }
     
     location @express {
+        resolver 127.0.0.11 valid=30s;
+
         set $upstream http://backend;
 
         proxy_pass $upstream;

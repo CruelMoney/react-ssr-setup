@@ -61,6 +61,7 @@ const serverRenderer = () => async (req, res) => {
             {content}
         </Html>
     );
+    console.log('sending');
 
     return res.send('<!doctype html>' + html);
 };

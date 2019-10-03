@@ -17,7 +17,7 @@ module.exports = {
         '@loadable/babel-plugin',
         '@babel/proposal-object-rest-spread',
         '@babel/proposal-class-properties',
-        '@babel/proposal-optional-chaining',
+        '@babel/plugin-proposal-optional-chaining',
         '@babel/syntax-dynamic-import',
         'macros',
         'babel-plugin-styled-components',

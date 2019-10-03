@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import addApollo from 'middleware/addApollo';
 import addLoadableExtractor from 'middleware/addLoadableExtractor';
+import addRedis, { cache } from 'middleware/addRedis';
 import paths from '../../config/paths';
 // import { configureStore } from '../shared/store';
 import errorHandler from './middleware/errorHandler';
@@ -45,6 +46,7 @@ app.use(
     })
 );
 
+app.use(addRedis);
 app.use(addApollo);
 app.use(addStore);
 app.use(addLoadableExtractor);
@@ -54,9 +56,18 @@ app.use(serverRenderer());
 app.use(errorHandler);
 
 app.listen(process.env.PORT || 8500, () => {
+    // invalidate redis
+    cache.del('*', (error: any, count: Number) => {
+        if (error) {
+            console.log(chalk.red('Cache could not be flushed'));
+        } else {
+            console.log(chalk.blue('Cache flushed: ' + count));
+        }
+    });
+
     console.log(
         `[${new Date().toISOString()}]`,
-        chalk.blue(`App is running: http://localhost:${process.env.PORT || 8500}`)
+        chalk.green(`App is running: http://localhost:${process.env.PORT || 8500}`)
     );
 });
 

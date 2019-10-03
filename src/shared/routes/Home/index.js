@@ -8,7 +8,7 @@ class Index extends Component {
     render() {
         return (
             <>
-                <Home {...this.props} />
+                <Home {...this.props} cache />
                 <ScrollToTop />
             </>
         );

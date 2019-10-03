@@ -5918,7 +5918,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.9:
+fbjs@^0.8.1, fbjs@^0.8.16, fbjs@^0.8.4, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -11681,6 +11681,14 @@ react-autosize-textarea@^7.0.0:
     autosize "^4.0.2"
     line-height "^0.3.1"
     prop-types "^15.5.6"
+
+react-component-caching@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-component-caching/-/react-component-caching-1.1.1.tgz#b16a05ae92a7df1687af88e350471768c23d9c20"
+  integrity sha512-lxk0xPakSz0n6kkNuJIKss0faGw9Qv77XmT0mJbBbbJa+GHlI1bJVbb9pOEf/gwhq6PiFj+b5NH6g8Aiodx0Mw==
+  dependencies:
+    fbjs "^0.8.16"
+    object-assign "^4.1.1"
 
 react-credit-card-input@^1.1.5:
   version "1.1.5"

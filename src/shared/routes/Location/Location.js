@@ -6,7 +6,7 @@ import Button from '../../components/common/Button-v2';
 import MoneyIcon from '../../components/graphics/Money';
 import NoteIcon from '../../components/graphics/Note';
 import Map from '../../components/common/Map';
-import CitySvg from '../../components/graphics/City';
+import citySvg from '../../assets/City.svg';
 import addTranslate from '../../components/higher-order/addTranslate';
 import { Environment } from '../../constants/constants';
 import ScrollToTop from '../../components/common/ScrollToTop';
@@ -137,7 +137,7 @@ const Location = (props) => {
                     <AsyncRequestForm initialCity={title} />
                 </div>
 
-                <CitySvg id="city-illustration" />
+                <img src={citySvg} />
             </div>
 
             <FloatingDJs {...translate(['copenhagen', 'denmark'])} location={title} />

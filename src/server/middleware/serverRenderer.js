@@ -49,21 +49,20 @@ const serverRenderer = () => async (req, res) => {
 
     const scriptTags = res.locals.chunkExtractor.getScriptElements();
 
-    return res.send(
-        '<!doctype html>' +
-            renderToString(
-                <Html
-                    helmetContext={helmetContext}
-                    state={state}
-                    apolloState={JSON.stringify(apolloState)}
-                    myCss={css}
-                    styleTags={styleTags}
-                    scriptTags={scriptTags}
-                >
-                    {content}
-                </Html>
-            )
+    const html = renderToString(
+        <Html
+            helmetContext={helmetContext}
+            state={state}
+            apolloState={JSON.stringify(apolloState)}
+            myCss={css}
+            styleTags={styleTags}
+            scriptTags={scriptTags}
+        >
+            {content}
+        </Html>
     );
+
+    return res.send('<!doctype html>' + html);
 };
 
 export default serverRenderer;

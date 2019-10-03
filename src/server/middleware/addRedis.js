@@ -5,9 +5,7 @@ import paths from '../../../config/paths';
 
 //  REDIS_URL=redis://lolipop:SOME_PASSWORD@dokku-redis-lolipop:6379
 let redisUrl = process.env.REDIS_URL;
-const options = {
-    expire: 60, // seconds
-};
+const options = {};
 if (redisUrl) {
     redisUrl = url.parse(redisUrl);
     options.host = redisUrl.hostname;
@@ -16,8 +14,26 @@ if (redisUrl) {
 }
 const cache = redis(options);
 
+if (process.env.NODE_ENV === 'development') {
+    cache.on('message', console.log);
+}
+
 const addRedis = (app) => {
-    app.get(cache.route());
+    console.log('adding redis');
+
+    const disableForLoggedIn = (req, res, next) => {
+        // Use only cache if user not signed in
+        const xToken = req.cookies['x-token'];
+        res.use_express_redis_cache = !xToken;
+        next();
+    };
+
+    app.get('*', disableForLoggedIn);
+    app.get('*', cache.route({ expire: -1 }));
+    // expire after 60 seconds
+    app.get('/user/*', cache.route({ expire: 60 }));
+    app.get('/event/*', cache.route({ expire: 60 }));
+    app.get('/gig/*', cache.route({ expire: 60 }));
 };
 
 export default addRedis;

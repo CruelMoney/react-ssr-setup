@@ -6,8 +6,6 @@ import { Helmet } from 'react-helmet-async';
 import ReactPixel from 'react-facebook-pixel';
 
 import { getActiveLanguage, getTranslate, setActiveLanguage } from 'react-localize-redux';
-import 'moment/locale/da';
-import moment from 'moment';
 
 import { init as analytics } from './utils/analytics/autotrack';
 import { Environment } from './constants/constants';
@@ -62,10 +60,6 @@ const App = (props) => {
     const [state, setState] = useState({
         mobileLinks: [],
     });
-
-    useEffect(() => {
-        moment.locale(activeLanguage);
-    }, [activeLanguage]);
 
     useEffect(() => {
         setLanguage(language);

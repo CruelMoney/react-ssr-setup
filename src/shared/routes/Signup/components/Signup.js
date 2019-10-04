@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import QueueAnim from 'rc-queue-anim';
 import { localize } from 'react-localize-redux';
 import vinyl from '../../../assets/Vinyl.svg';
 import krIcon from '../../../assets/money.svg';
 import Footer from '../../../components/common/Footer';
-/*animation stuff*/
 import appStoreBadge from '../../../assets/app-store-badge.svg';
 import SignUpForm from './SignUpForm';
 
 class Signup extends Component {
-    themeColor = '#B031FF';
-    secondColor = '#31DAFF';
-
     state = {
         reference: null,
     };
@@ -19,11 +14,13 @@ class Signup extends Component {
     componentDidMount() {
         const query = new URLSearchParams(window.location.search);
         const reference = query.get('referredBy');
-        console.log(reference); // "a-value"
         this.setState({
             reference: reference,
         });
     }
+
+    themeColor = '#B031FF';
+    secondColor = '#31DAFF';
 
     render() {
         const { translate } = this.props;
@@ -81,34 +78,28 @@ class Signup extends Component {
                     <div className="container">
                         <div className="info-boxes">
                             <div className="row">
-                                <QueueAnim type="top">
-                                    <div key="cardA">
-                                        <div className="col-sm-6 col-md-5 col-md-push-1">
-                                            <div className="card">
-                                                <img src={krIcon} alt="Money icon" />
-                                                <h2 style={{ color: 'rgb(176, 49, 255)' }}>
-                                                    {translate('signup.sections.left.header')}
-                                                </h2>
-                                                <p style={{ color: '#32325D' }}>
-                                                    {translate('signup.sections.left.content')}
-                                                </p>
-                                            </div>
-                                        </div>
+                                <div className="col-sm-6 col-md-5 col-md-push-1">
+                                    <div className="card">
+                                        <img src={krIcon} alt="Money icon" />
+                                        <h2 style={{ color: 'rgb(176, 49, 255)' }}>
+                                            {translate('signup.sections.left.header')}
+                                        </h2>
+                                        <p style={{ color: '#32325D' }}>
+                                            {translate('signup.sections.left.content')}
+                                        </p>
                                     </div>
-                                    <div key="cardB">
-                                        <div className="col-sm-6 col-md-5 col-md-push-1">
-                                            <div className="card">
-                                                <img src={vinyl} alt="vinyl icon" />
-                                                <h2 style={{ color: 'rgb(176, 49, 255)' }}>
-                                                    {translate('signup.sections.right.header')}
-                                                </h2>
-                                                <p style={{ color: '#32325D' }}>
-                                                    {translate('signup.sections.right.content')}
-                                                </p>
-                                            </div>
-                                        </div>
+                                </div>
+                                <div className="col-sm-6 col-md-5 col-md-push-1">
+                                    <div className="card">
+                                        <img src={vinyl} alt="vinyl icon" />
+                                        <h2 style={{ color: 'rgb(176, 49, 255)' }}>
+                                            {translate('signup.sections.right.header')}
+                                        </h2>
+                                        <p style={{ color: '#32325D' }}>
+                                            {translate('signup.sections.right.content')}
+                                        </p>
                                     </div>
-                                </QueueAnim>
+                                </div>
                             </div>
                         </div>
                     </div>
